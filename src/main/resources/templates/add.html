@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Add new user</title>
+</head>
+
+<body>
+<div>
+    <form th:method="post" th:action="@{/admin/add}" th:object="${userPage}">
+        <h4>Create</h4>
+
+        <div>
+            <label for="firstname">First name:</label>
+            <input type="text" th:field="*{firstname}" id="firstname" placeholder="Firstname">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="lastname">Lastname:</label>
+            <input type="text" th:field="*{lastname}" id="lastname" placeholder="Lastname">
+        </div>
+
+        <br>
+
+        <br>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" th:field="*{email}" id="email" placeholder="Email">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="text" th:field="*{password}" id="password" placeholder="Password">
+        </div>
+
+        <br>
+
+        <div>
+            <label>Roles:
+                <input type="checkbox" name="roles"
+                       th:each="role : ${roles}"
+                       th:text="${role.name}"
+                       th:value="${role.id}"
+                       th:field="*{roles}"/>
+            </label>
+        </div>
+
+        <br>
+
+        <div>
+            <button type="submit">Create</button>
+        </div>
+
+    </form>
+
+    <br>
+
+    <form th:action="@{/admin}">
+        <input type="submit" value="Return to admin page">
+    </form>
+</div>
+</body>
+</html>
